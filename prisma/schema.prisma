@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,19 +9,18 @@ datasource db {
 }
 
 enum Role {
-  AGENCY_OWNER
-  AGENCY_ADMIN
-  SUBACCOUNT_USER
-  SUBACCOUNT_GUEST
+  SUB_ADMIN
+  ADMIN
+  USER_ACCOUNT
+  GUEST_ACCOUNT
 }
 
 model User {
-  id           String         @id @default(uuid())
-  name         String?
-  image        String?         @db.Text
-  email        String?         @unique
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
-  role         Role           @default(SUBACCOUNT_USER)
-
+  id        String   @id @default(uuid())
+  name      String?
+  image     String?  @db.Text
+  email     String?  @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  role      Role     @default(USER_ACCOUNT)
 }
