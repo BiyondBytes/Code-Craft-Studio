@@ -16,11 +16,33 @@ enum Role {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  name      String?
-  image     String?  @db.Text
-  email     String?  @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  role      Role     @default(USER_ACCOUNT)
+  id             String     @id @default(uuid())
+  name           String?
+  image          String?    @db.Text
+  email          String?    @unique
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  role           Role       @default(USER_ACCOUNT)
+  projectsOwned  Project[]  @relation("ProjectOwner")
+  projectsGuest  Project[]  @relation("ProjectGuests")
+}
+
+model Project {
+  id           String    @id @default(cuid())
+  projectId    String
+  startDate    DateTime
+  updateDate   DateTime
+  owner        User      @relation("ProjectOwner", fields: [ownerId], references: [id])
+  ownerId      String
+  guest        User[]    @relation("ProjectGuests")
+  title        String
+  type         String
+  isPrivate    Boolean
+  description  String
+  images       String
+  link         String
+}
+
+model Plan {
+  id           String    @id @default(cuid())
 }
