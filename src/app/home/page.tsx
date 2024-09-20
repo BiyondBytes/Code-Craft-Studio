@@ -5,7 +5,6 @@ export default function Home() {
   return (
     <main className="w-full h-full ">
       <Header/>
-      sfl;sdk;lkfd;ldlfk;ldk;l
     </main>
   );
 }

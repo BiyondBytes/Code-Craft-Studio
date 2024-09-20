@@ -14,19 +14,19 @@ export default async function middleware(request: NextRequest) {
     }`
 
   //if subdomain exists
-  const customSubDomain = hostname
-    .get('host')
-    ?.split(`${process.env.NEXT_PUBLIC_DOMAIN}`)
-    .filter(Boolean)[0]
+  // const customSubDomain = hostname
+  //   .get('host')
+  //   ?.split(`${process.env.NEXT_PUBLIC_DOMAIN}`)
+  //   .filter(Boolean)[0]
 
-    console.log(customSubDomain,"cmdomain")
-    console.log(pathWithSearchParams,customSubDomain,"cmdomain")
+  //   console.log(customSubDomain,"cmdomain")
+  //   console.log(pathWithSearchParams,customSubDomain,"cmdomain")
 
-  if (customSubDomain) {
-    return NextResponse.rewrite(
-      new URL(`/${customSubDomain}${pathWithSearchParams}`, request.url)
-    )
-  }
+  // if (customSubDomain) {
+  //   return NextResponse.rewrite(
+  //     new URL(`/${customSubDomain}${pathWithSearchParams}`, request.url)
+  //   )
+  // }
 
   if (
     url.pathname === '/' ||

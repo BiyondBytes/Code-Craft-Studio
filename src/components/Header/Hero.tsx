@@ -1,5 +1,4 @@
 import React from "react";
-import HeroContent from "./HeroContent";
 import Image from "next/image";
 
 const Hero = () => {
@@ -9,29 +8,48 @@ const Hero = () => {
                 autoPlay
                 muted
                 loop
-                className="rotate-180 absolute top-[-200px]  h-full w-full left-0 -z-10 object-cover "
+                className="rotate-180 absolute top-1/2  h-full w-full left-0 -translate-y-[98%] max-md:-translate-y-[85%] -z-10 object-cover "
             >
                 <source src="/assets/blackhole.webm" type="video/webm" />
             </video>
-            <div className="absolute top-16 left-0 right-0 mx-auto w-[45%] h-full ">
+            {/* hero image  */}
+            <div className="absolute w-1/2 h-1/2 max-md:w-[90%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-[30%] ">
+                {/* Foreground (now in the background) */}
                 <Image
+                    className="absolute top-0 left-0 w-full h-full object-contain pointer-events-none -z-10 foo"
+                    style={{
+                        filter: "drop-shadow(-10px -10px 40px rgba(255, 255, 255, 0.5)) drop-shadow(-10px -10px 60px rgba(255, 255, 255, 0.1)) drop-shadow(0 0 50px rgba(140, 69, 255, 1))",
+                    }}
                     src="/assets/hero-image.png"
                     alt="hero"
-                    width={400}
-                    height={400}
-                    className="absolute top-0 left-0 w-full h-full object-contain"
+                    width={499}
+                    height={100}
                 />
-                <div className="absolute top-32 left-0 text-center">
-                    <h1 className=" text-8xl font-semibold tracking-tighter  bg-white bg-[radial-gradient(100%_100%_at_top_left,white,rgba(213,129,255,0.5),rgba(74,32,138,0.8))] text-transparent bg-clip-text drop-shadow-[0_4px_6px_rgba(74,32,138,0.8)]">
-                        CODE CRAFT STUDIO
-                    </h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem excepturi, a eligendi neque dolore accusantium facilis aperiam incidunt non! Maxime, optio quam? Porro doloribus quidem asperiores voluptas quaerat, magni sequi.</p>
-                    <button>Studio</button>
-                </div>
-                <div>
-                </div>
+
+                {/* Background (now in front) */}
+                <div
+                    className="absolute top-0 left-0 w-full h-full bg-purple-500 bg-[radial-gradient(50%_50%_at_16.8%_18.3%,white,rgb(184,148,255)_37.7%,rgb(24,0,66))]  z-10"
+                    style={{
+                        WebkitMaskImage: "url('/assets/hero-image.png')",
+                        WebkitMaskSize: "contain",
+                        WebkitMaskRepeat: "no-repeat",
+                        WebkitMaskPosition: "center",
+                    }}
+                ></div>
             </div>
-            {/* <HeroContent /> */}
+            <div className="relative container top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+                <h1
+                    className=" max-md:text-5xl text-8xl font-semibold tracking-tighter  bg-white bg-[radial-gradient(100%_100%_at_top_left,white,rgba(213,129,255,0.5),rgba(74,32,138,0.8))] text-transparent bg-clip-text drop-shadow-[0_4px_6px_rgba(74,32,138,0.8)] -z-10">
+                    CODE CRAFT STUDIO
+                </h1>
+
+            </div>
+            <div className="absolute left-0 bottom-0 w-1/2 max-md:w-full p-4 text-center right-0 mx-auto">
+                <button className="font-bold my-6 py-2">Studio</button>
+                <p className="text-white/70">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus expedita commodi nam iste molestiae, ad maiores iure nihil explicabo quidem ipsa? Quae quis voluptate dignissimos iure eaque hic adipisci ad.
+                </p>
+            </div>
         </div>
     );
 };

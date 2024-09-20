@@ -65,3 +65,7 @@
   }
 }
 
+.custom-shadow {
+  filter: drop-shadow(5px 15px 10px rgba(74,32,138,0.8));
+}
+
